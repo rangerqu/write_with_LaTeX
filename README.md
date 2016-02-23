@@ -52,6 +52,16 @@ __Mac__:
 	$ cd zju_thesis
 	$ latexmk main
 
+__「著者-出版年」格式（Mac）__
+
+首先添加或修改 .latexmkrc，请做好备份。
+
+    $ cp latexmkrc_mac ~/.latexmkrc
+
+然后使用 shell 命令进行编译。
+
+	$ sh run.sh
+
 __清理临时文件__:
 
 一般使用

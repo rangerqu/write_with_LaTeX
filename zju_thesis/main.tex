@@ -88,7 +88,14 @@
 \include{contents/intro}
 \include{contents/structure}
 \include{contents/specification}
+\include{contents/bibtest}
 \backmatter
+
+% 为著者-出版年格式添加序号
+\makeatletter
+\def\@biblabel#1{~~~~~~~~~~$[{#1}]$}
+\makeatother
+
 \bibliography{reference_data_base/references}
 % \nocite{*} % to show the entire references, annotate it if need.
 \appendix
