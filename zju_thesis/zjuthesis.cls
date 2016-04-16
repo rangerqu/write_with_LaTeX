@@ -42,6 +42,24 @@ Created: 2014.09.15 by Sky and Hamburger, Last Modified: 2014.09.12 by Hamburger
 \RequirePackage{array}
 % hyperref 宏包可根据交叉引用生成超链接，同时生成 PDF 文档的书签。
 \RequirePackage{hyperref}
+% 文件之间的交叉引用
+\RequirePackage{xr}
+% 图表相关宏包
+\usepackage{setspace}				% 设置行距
+\usepackage{rotating}				% 横排图表
+\usepackage{pdflscape}				% 横排图表
+\usepackage{multirow}				% 跨行单元格
+\usepackage{threeparttablex}		% 表格注释
+\usepackage{dcolumn}				% 表格点对齐
+\newcolumntype{d}[1]{D{.}{.}{#1}}	% 表格点对齐
+\let\oldtabular\tabular											% 表格格式设置
+\renewcommand{\tabular}{\renewcommand\multirowsetup{\centering}		% - multirow 居中
+                        \oldtabular}
+\let\oldlongtable\longtable										% 长表格格式设置
+\renewcommand{\longtable}{\renewcommand\baselinestretch{1}\small	% - 设置行间距和字号
+                        \renewcommand\arraystretch{1}				% - 调整单元格高度
+                        \renewcommand\multirowsetup{\centering}		% - multirow 居中
+                        \oldlongtable}
 
 \renewcommand\figureautorefname{图}
 \renewcommand\tableautorefname{表}
