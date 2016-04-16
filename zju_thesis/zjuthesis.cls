@@ -93,7 +93,8 @@ Created: 2014.09.15 by Sky and Hamburger, Last Modified: 2014.09.12 by Hamburger
 }
 \urlstyle{same}
 % 参考文献正文上标样式设置
-\RequirePackage[sort&compress,numbers]{natbib}
+%%\RequirePackage[sort&compress,numbers]{natbib}
+\RequirePackage{natbib}	% 顺序编码制 > 著者-出版年
 % hypernat 可以让hyperref 和natbib 混合使用，但它需要放在这两者之后。
 \RequirePackage{hypernat}
 % 修复图表超链接不准的问题
@@ -972,10 +973,12 @@ Created: 2014.09.15 by Sky and Hamburger, Last Modified: 2014.09.12 by Hamburger
 
 % 采用gbt7714-2005参考文献样式，
 % 参考自https://github.com/githamburger/GBT7714-2005-BibTeX-Style
-\bibliographystyle{gbt7714-2005}
+%%\bibliographystyle{gbt7714-2005}
+\bibliographystyle{GBT7714-2005AYLang-ZJU}	% 顺序编码制 > 著者-出版年
 
 % natbib宏包命令，参考文献上标设置。
-\setcitestyle{super,square,comma}
+%%\setcitestyle{super,square,comma}
+% 顺序编码制 > 著者-出版年
 
 % 重新定义 \ref 命令，使其前面自动加一个 ``~''。因为hyperref 宏包会通过 \AtBegin-
 % Document 修改 \ref 的定义，因此我们对 \ref 的修改也必须使用\AtBeginDocument 命
