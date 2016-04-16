@@ -45,6 +45,7 @@ Created: 2014.09.15 by Sky and Hamburger, Last Modified: 2014.09.12 by Hamburger
 
 \renewcommand\figureautorefname{图}
 \renewcommand\tableautorefname{表}
+\renewcommand\equationautorefname{公式}
 
 \AtEndOfClass{
 	\hypersetup{
@@ -268,6 +269,28 @@ Created: 2014.09.15 by Sky and Hamburger, Last Modified: 2014.09.12 by Hamburger
 \setsansfont{TeX Gyre Heros}	%相当于MS Word中的Helvetica。
 \setmonofont{TeX Gyre Cursor}	%相当于MS Word中的Curier。
 \RequirePackage{xeCJK}
+
+
+% xeCJK 环境初始化
+\xeCJKsetup{xeCJKactive=true}
+
+% 打开/关闭CJK文字之间的空格，tex 源码中汉字间的换行符和空格都会被编译成空格
+% 作者编写论文 tex 源码时一般写到一个逗号就换行再写 这样能最大限度的保证清晰
+% 如不符合您的需求请自行解注释
+%\xeCJKsetup{CJKspace=true}
+
+\xeCJKsetup{CheckSingle=true} % 避免单个CJK字符独占一行
+
+% 非简体中文常用字处理(生僻字、繁体字、日本汉字)
+% 发现实际排版时此类字框会相对于行内上移一个微小的单位
+% 故当封面作者名称含此类字时，只能预留相应的字框宽度，待后期补上
+%\xeCJKDeclareCharClass{Ext-B}{ "20000 -> "2A6DF } % 看XeLaTeX文档写的 没软用
+%\xeCJKsetup{AutoFallBack=true} % 如果不加这句 非简体中文汉字在章节标题和论文标题上显示异常
+
+% 标点处理格式 行末半角 所有标点占一个汉字宽度 行首行末对齐
+\xeCJKEditPunctStyle{hangmobanjiao}{enabled-global-setting = false}
+
+
 % 设置中文正文字体为仿宋，加粗为黑体，斜体为楷体
 \setCJKmainfont[BoldFont={SimHei}, ItalicFont={KaiTi}]{FangSong}
 % 中文无衬线字体，不知道怎么设置，待以后解决。
@@ -572,23 +595,31 @@ Created: 2014.09.15 by Sky and Hamburger, Last Modified: 2014.09.12 by Hamburger
 							& \ZJUunderline[260pt]{\ZJU@enreviewerB}\\[2mm]
 							& \ZJUunderline[260pt]{\ZJU@enreviewerC}\\[2mm]
 							& \ZJUunderline[260pt]{\ZJU@enreviewerD}\\[2mm]
-							& \ZJUunderline[260pt]{\ZJU@enreviewerE}
+							& \ZJUunderline[260pt]{\ZJU@enreviewerE}\\[8mm]
+		\multicolumn{2}{l}{\zihao{4} Examining Committee Chairperson:}\\[2mm]
+							& \ZJUunderline[260pt]{\ZJU@enchairperson}\\[2mm]
+		\multicolumn{2}{l}{\zihao{4} Examining Committee Members:}\\[2mm]
+							&\ZJUunderline[260pt]{\ZJU@encommissionerA}\\[2mm]
+							&\ZJUunderline[260pt]{\ZJU@encommissionerB}\\[2mm]
+							&\ZJUunderline[260pt]{\ZJU@encommissionerC}\\[2mm]
+							&\ZJUunderline[260pt]{\ZJU@encommissionerD}\\[2mm]
+							&\ZJUunderline[260pt]{\ZJU@encommissionerE}
 		\end{tabular}
 	\end{center}
-	\vspace{8mm}
+%	\vspace{8mm}
 	% 以下水平间距的命令用于跟上面对齐
 	% 第一个水平间距命令采用LaTeX的\hspace命令
 	% 若采用之后的TeX原始间距命令则水平间距无法产生，原因未知
-	\hspace*{6.3ex}		{\zihao{4} Examining Committee Chairperson:}\\[2mm]
+%	\hspace*{6.3ex}		{\zihao{4} Examining Committee Chairperson:}\\[2mm]
 	% 以下间距命令采用TeX命令，\hb@xt@ 即为 \hbox to 的宏
 	% 这里若采用\hspace命令，这水平间距无法产生，原因未知
-	\hspace*{30.2ex} 	\ZJUunderline[260pt]{\ZJU@enchairperson}\\[2mm]
-	\hspace*{6.3ex}	{\zihao{4} Examining Committee Members:}\\[2mm]
-	\hspace*{30.2ex} 	\ZJUunderline[260pt]{\ZJU@encommissionerA}\\[2mm]
-	\hspace*{30.2ex} 	\ZJUunderline[260pt]{\ZJU@encommissionerB}\\[2mm]
-	\hspace*{30.2ex} 	\ZJUunderline[260pt]{\ZJU@encommissionerC}\\[2mm]
-	\hspace*{30.2ex} 	\ZJUunderline[260pt]{\ZJU@encommissionerD}\\[2mm]
-	\hspace*{30.2ex} 	\ZJUunderline[260pt]{\ZJU@encommissionerE}\\
+%	\hspace*{30.2ex} 	\ZJUunderline[260pt]{\ZJU@enchairperson}\\[2mm]
+%	\hspace*{6.3ex}	{\zihao{4} Examining Committee Members:}\\[2mm]
+%	\hspace*{30.2ex} 	\ZJUunderline[260pt]{\ZJU@encommissionerA}\\[2mm]
+%	\hspace*{30.2ex} 	\ZJUunderline[260pt]{\ZJU@encommissionerB}\\[2mm]
+%	\hspace*{30.2ex} 	\ZJUunderline[260pt]{\ZJU@encommissionerC}\\[2mm]
+%	\hspace*{30.2ex} 	\ZJUunderline[260pt]{\ZJU@encommissionerD}\\[2mm]
+%	\hspace*{30.2ex} 	\ZJUunderline[260pt]{\ZJU@encommissionerE}\\
 	\vfill
 	\hfill{\zihao{4} Date of oral defence：\ZJUunderline[150pt]{%
 	\ZJU@eendefencedate}}}
@@ -660,9 +691,9 @@ Created: 2014.09.15 by Sky and Hamburger, Last Modified: 2014.09.12 by Hamburger
 		扫描等复制手段保存、汇编学位论文。
 
 		（保密的学位论文在解密后适用本授权书）\\[20pt]
-		\begin{tabular}{p{0.5\textwidth}p{0.4\textwidth}}
-			\CTEXindent 学位论文作者签名：	&  导师签名：\\[20pt]
-			\CTEXindent \signature@date 	&  \signature@date
+		\begin{tabular}{p{0.5\textwidth}p{0.5\textwidth}}
+			学位论文作者签名：	&  导师签名：\\[20pt]
+			\signature@date 	&  \signature@date
 		\end{tabular}
 
 	}
@@ -753,24 +784,25 @@ Created: 2014.09.15 by Sky and Hamburger, Last Modified: 2014.09.12 by Hamburger
 
 %%一级节标题格式设置----四号仿宋加黑
 \renewcommand\section{\@startsection{section}{1}{\z@}%
-									{3.5ex \@plus 1ex \@minus .2ex}%
-									{2.3ex \@plus.2ex}%
+									{2ex \@plus .2ex \@minus .2ex}%
+									{1.8ex \@plus.2ex}%
 									{\parindent \z@ \raggedright
 									 \fangsong\zihao{4}\bfseries}}
 
 %%二级节标题格式设置----小四号仿宋
 \renewcommand\subsection{\@startsection{subsection}{2}{\z@}%
-									{3.25ex \@plus 1ex \@minus .2ex}%
-									{1.5ex \@plus.2ex}%
+									{1.6ex \@plus 0.4ex \@minus .2ex}%
+									{1ex \@plus.2ex}%
 									{\parindent \z@ \raggedright
 									 \fangsong\zihao{-4}}}
 
 %%三级节标题格式设置----小四号仿宋
 \renewcommand\subsubsection{\@startsection{subsubsection}{3}{\z@}%
-									{3.25ex \@plus 1ex \@minus .2ex}%
-									{1.5ex \@plus.2ex}%
+									{1.4ex \@plus 0.3ex \@minus .2ex}%
+									{0.9ex \@plus.2ex}%
 									{\parindent \z@ \raggedright
 									 \fangsong\zihao{-4}}}
+
 
 % \frontmatter,\mainmatter,\backmatter重定义。
 \renewcommand\frontmatter{%
@@ -960,20 +992,20 @@ Created: 2014.09.15 by Sky and Hamburger, Last Modified: 2014.09.12 by Hamburger
 
 %% 以下为设置浮动对象和文字之间的距离。
 % 版心顶部或者版心底部浮动体之间的垂直距离，默认为12pt plus 2pt minus 2pt。
-\setlength{\floatsep}{20bp \@plus4pt \@minus1pt}
+\setlength{\floatsep}{10bp \@plus2pt \@minus1pt}
 
 % 文本行之间浮动体（使用h位置选项）与上下文之间的距离，默认为12pt plus 2pt minus
 % 2pt。
-\setlength{\intextsep}{20bp \@plus4pt \@minus2pt}
+\setlength{\intextsep}{12bp \@plus2pt \@minus1pt}
 
 % 版心顶部或底部的浮动体与文本之间的距离，默认为12pt plus 2pt minus 2pt。
-\setlength{\textfloatsep}{20bp \@plus4pt \@minus2pt}
+\setlength{\textfloatsep}{12bp \@plus2pt \@minus1pt}
 
 % 浮动页中，版心顶部的浮动体与版心顶边之间的距离，默认为0pt plus 1fil。
 \setlength{\@fptop}{0bp \@plus1.0fil}
 
 % 浮动页中浮动体直接的距离，默认为8pt plus 2fil。
-\setlength{\@fpsep}{12bp \@plus2.0fil}
+\setlength{\@fpsep}{8bp \@plus2.0fil}
 
 % 浮动页中，版心底部的浮动体与版心底边之间的距离，默认为0pt plus 1fil。
 \setlength{\@fpbot}{0bp \@plus1.0fil}
