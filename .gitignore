@@ -38,3 +38,4 @@
 !/zju_thesis/contents/**/*.pdf
 *.fls
 ~*.doc
+.DS_Store
